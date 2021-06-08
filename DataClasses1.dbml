@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SageBook" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=SageBook;Integrated Security=True" SettingsObjectName="HW2._1.Properties.Settings" SettingsPropertyName="SageBookConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Book" Member="Book">
+    <Type Name="Book">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Book_SageBook" Member="SageBook" ThisKey="id" OtherKey="idB" Type="SageBook" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sage" Member="Sage">
+    <Type Name="Sage">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Sage_SageBook" Member="SageBook" ThisKey="id" OtherKey="idS" Type="SageBook" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SageBook" Member="SageBook">
+    <Type Name="SageBook">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idS" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idB" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Book_SageBook" Member="Book" ThisKey="idB" OtherKey="id" Type="Book" IsForeignKey="true" />
+      <Association Name="Sage_SageBook" Member="Sage" ThisKey="idS" OtherKey="id" Type="Sage" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
